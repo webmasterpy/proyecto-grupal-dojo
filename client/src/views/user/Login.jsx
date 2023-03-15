@@ -4,6 +4,7 @@ import BasicForm from '../../components/user/BasicForm';
 import { useState } from "react";
 import axios from "axios";
 import ValidForm from '../../components/user/ValidForm';
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
@@ -12,6 +13,7 @@ const Login = () => {
 	const [ password, setPassword ] = useState("");
 	const [ isEmailValid, setIsEmailValid] = useState("");
 	const [ isPasswordValid, setIsPasswordValid ] = useState("");
+	const navigate = useNavigate();
 
 	// ! Handle Submit
 	const handleSubmit = (e) => {
@@ -34,6 +36,7 @@ const Login = () => {
 					// Guardamos en el localStorage los datos del usuario
 					.then(({ data }) => {
 						window.localStorage.setItem("userId", JSON.stringify(data.user));
+						navigate("/home")
 					})
 					.catch((err) => {
 						console.log(err);
