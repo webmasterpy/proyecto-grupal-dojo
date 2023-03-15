@@ -5,6 +5,7 @@ import { Home } from "./components/Home";
 import FormPolls from "./components/FormPolls";
 import { VotePoll } from "./components/VotePoll";
 import PollResult  from "./components/PollResult";
+import User from "./views/User";
 import axios from "axios";
 import moment from "moment";
 
@@ -19,6 +20,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/user" element={<User />} />
           <Route path="/polls/new" element={<FormPolls />} />
           <Route path="/poll/:id" element={<VotePoll />} />
           <Route path="/poll/chart/:id" element={<PollResult />} />
