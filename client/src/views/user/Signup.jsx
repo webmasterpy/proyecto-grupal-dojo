@@ -18,6 +18,23 @@ const Signup = () => {
 	// ! Handle Submit
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		// Refrescamos los errores
+		setIsUserValid("");
+		setIsEmailValid("");
+		setIsPasswordValid("");
+
+		// Envio del formulario
+		axios.post(
+			API_URL + "/api/signup", 
+			{user, email, password},
+			{withCredentials: true})
+			.then(user => console.log(user))
+			.catch(({response}) => {
+				setIsUserValid(response.data.user);
+				setIsEmailValid(response.data.email);
+				setIsPasswordValid(response.data.password);
+			});
 	}
 
 	return (
@@ -40,7 +57,7 @@ const Signup = () => {
 
 				<BasicForm
 					label="Password"
-					type="text"
+					type="password"
 					placeholder="Password"
 					onChange={({ target }) => setPassword(target.value)} />
 				<ValidForm isFormValid={isPasswordValid} />
