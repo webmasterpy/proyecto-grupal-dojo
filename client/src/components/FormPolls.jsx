@@ -38,40 +38,63 @@ const FormPolls = () => {
       .catch((err) => console.log(err.message));
   };
 
-  return (
-    <div className="container">
-      <div className="button_container">
-        <button className="back_home_button" onClick={() => navigate("/home")}>Back to home</button>
+  // * Render Form Polls
+  const renderFormPolls = () => {
+    return (
+      <>  
+      <div className="container">
+        
+        <div className="button_container">
+          <button className="back_home_button" onClick={() => navigate("/home")}>Back to home</button>
+        </div>
+        
+        <form className="form_poll" onSubmit={handleSubmit}>
+          <textarea
+            name="question"
+            cols="30"
+            rows="10"
+            onChange={handleChangeQuestion}
+            required
+          ></textarea>
+          <label htmlFor="option1">Option 1 *</label>
+          <input
+            type="text"
+            name="option1"
+            onChange={handleOptionChange}
+            required
+          />
+          <label htmlFor="option2">Option 2 *</label>
+          <input
+            type="text"
+            name="option2"
+            onChange={handleOptionChange}
+            required
+          />
+          <label htmlFor="option3">Option 3</label>
+          <input 
+            type="text" 
+            name="option3" 
+            onChange={handleOptionChange} />
+          <label htmlFor="option4">Option 4</label>
+          <input 
+            type="text" 
+            name="option4" 
+            onChange={handleOptionChange} />
+          <button type="submit">Submit poll</button>
+        </form>
       </div>
-      <form className="form_poll" onSubmit={handleSubmit}>
-        <textarea
-          name="question"
-          cols="30"
-          rows="10"
-          onChange={handleChangeQuestion}
-          required
-        ></textarea>
-        <label htmlFor="option1">Option 1 *</label>
-        <input
-          type="text"
-          name="option1"
-          onChange={handleOptionChange}
-          required
-        />
-        <label htmlFor="option2">Option 2 *</label>
-        <input
-          type="text"
-          name="option2"
-          onChange={handleOptionChange}
-          required
-        />
-        <label htmlFor="option3">Option 3</label>
-        <input type="text" name="option3" onChange={handleOptionChange} />
-        <label htmlFor="option4">Option 4</label>
-        <input type="text" name="option4" onChange={handleOptionChange} />
-        <button type="submit">Submit poll</button>
-      </form>
-    </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+    {
+      window.localStorage.getItem("userId") !== null
+        ? renderFormPolls()
+        : navigate("/")
+    }
+    </>
   );
 };
 
