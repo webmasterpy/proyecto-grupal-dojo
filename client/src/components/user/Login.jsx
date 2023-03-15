@@ -1,7 +1,8 @@
 import { Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const Login = () => {
 	const API_URL = "http://localhost:8000";
@@ -9,7 +10,6 @@ const Login = () => {
 	const [ password, setPassword ] = useState("");
 	const [ isEmailValid, setIsEmailValid] = useState("");
 	const [ isPasswordValid, setIsPasswordValid ] = useState("");
-	const navigate = useNavigate();
 
 	// ! Handle Submit
 	const handleSubmit = (e) => {
@@ -19,15 +19,9 @@ const Login = () => {
 		setIsPasswordValid("");
 
 		axios.post(
-			API_URL + "/login", 
+			API_URL + "/api/login", 
 			{email, password}, {withCredentials: true})
-			.then(result => 
-				axios.get(API_URL + "/authUser", {withCredentials: true})
-					.then((user) => {
-				console.log(user.data);
-				window.localStorage.setItem("user", JSON.stringify(user.data));
-				navigate("noVisit");
-			}))
+			.then(result => console.log(result))
 			.catch(({response}) => {
 				setIsEmailValid(response.data["email"]);
 				setIsPasswordValid(response.data["password"]);

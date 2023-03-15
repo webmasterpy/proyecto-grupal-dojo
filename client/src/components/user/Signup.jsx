@@ -1,6 +1,8 @@
 import { Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const Signup = () => {
 	const API_URL = "http://localhost:8000";
@@ -16,14 +18,14 @@ const Signup = () => {
 		setIsEmailValid("");
 		setIsPasswordValid("");
 
-		// axios.post(
-		// 	API_URL + "/signup", 
-		// 	{email, password}, {withCredentials: true})
-		// 	.then(result => console.log(result))
-		// 	.catch(({response}) => {
-		// 		setIsEmailValid(response.data["email"]);
-		// 		setIsPasswordValid(response.data["password"]);
-		// 	})
+		axios.post(
+			API_URL + "/api/signup", 
+			{email, password}, {withCredentials: true})
+			.then(result => console.log(result))
+			.catch(({response}) => {
+				setIsEmailValid(response.data["email"]);
+				setIsPasswordValid(response.data["password"]);
+			})
 	}
 
 	return (
