@@ -65,7 +65,7 @@ module.exports.login_post = (req, res) => {
 		.then(user => {
 			const token = createToken(user._id); // Creamos un token utilizando solo el id del usuario
 
-			res.cookie("login", token, { httpOnly: true, maxAge: maxAge * 1000 })
+			res.cookie("user_token", token, { httpOnly: true, maxAge: maxAge * 1000 })
 			res.status(200).json({user: user._id}) //Enviamos solamente el id del usuario
 		})
 		.catch(err => {
