@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, Col, Row } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import BasicForm from '../../components/user/BasicForm';
 import { useState } from "react";
 import axios from "axios";
@@ -16,6 +16,33 @@ const Login = () => {
 	// ! Handle Submit
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		// Refrescamos los errores
+		setIsEmailValid("");
+		setIsPasswordValid("");
+
+		// Envio del formulario
+		axios.post(
+			API_URL + "/api/login",
+			{email, password},
+			{withCredentials: true})
+			.then(({ data }) => {
+				// Si los datos son correctos
+				axios.get(
+					API_URL + "/api/authUser", 
+					{withCredentials: true})
+					// Guardamos en el localStorage los datos del usuario
+					.then(({ data }) => {
+						window.localStorage.setItem("userId", JSON.stringify(data.user));
+					})
+					.catch((err) => {
+						console.log(err);
+					})
+			})
+			.catch(({ response }) => {
+				setIsEmailValid(response.data.email);
+				setIsPasswordValid(response.data.password);
+			});
 	}
 
 	return (
