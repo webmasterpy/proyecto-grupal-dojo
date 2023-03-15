@@ -34,14 +34,14 @@ const FormPolls = () => {
         question: question,
         options: optionsSend,
       })
-      .then((res) => navigate("/"))
+      .then((res) => navigate("/home"))
       .catch((err) => console.log(err.message));
   };
 
   return (
     <div className="container">
       <div className="button_container">
-        <button className="back_home_button" onClick={() => navigate("/")}>Back to home</button>
+        <button className="back_home_button" onClick={() => navigate("/home")}>Back to home</button>
       </div>
       <form className="form_poll" onSubmit={handleSubmit}>
         <textarea
