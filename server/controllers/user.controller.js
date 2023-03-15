@@ -7,7 +7,7 @@ const maxAge = 1 * 24 * 60 * 60; // Dias * horas * min * seg
 const createToken = ( id ) => {
 	return jwt.sign(
 		{ user: id }, 
-		process.env.TOKEN_KEY,
+		"clave-secreta-token",
 		{
 			expiresIn: maxAge,
 		})
@@ -53,6 +53,7 @@ module.exports.signup_post = (req, res) => {
 			res.status(201).json(user);
 		})
 		.catch(err => {
+			console.log(err);
 			const errors = handleErrors(err);			
 			res.status(400).json(errors);
 		});
