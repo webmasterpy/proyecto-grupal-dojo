@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const cors = require("cors");
+const user_routes = require("./routes/user.routes");
 
 //middleware
 app.use(express.json());
@@ -17,6 +18,7 @@ require("./config/mongoose.config");
 //enrutamiento
 const projectRoutes = require("./routes/polls.routes.js");
 projectRoutes(app);
+app.use(user_routes);
 
 //levantar servidor node
 app.listen(port, () => console.log("servidor corriendo en puerto:" + port));
