@@ -19,8 +19,8 @@ function App() {
       <Bar />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/user" element={<UserForm />} />
+          <Route path="/" element={<UserForm />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/polls/new" element={<FormPolls />} />
           <Route path="/poll/:id" element={<VotePoll />} />
           <Route path="/poll/chart/:id" element={<PollResult />} />
