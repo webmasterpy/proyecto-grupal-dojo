@@ -14,12 +14,15 @@ const createToken = ( id ) => {
 }
 
 // ! Handle Error
-const handleErrors = ({errors, message, code}) => {
-	const error =  {email:"", password:""};
+const handleErrors = ({errors, message, code, keyPattern}) => {
+	const error =  {user:"", email:"", password:""};
 
-	// Duplicated email
+	// Duplicated
 	if(code === 11000){
-		error.email = "That email is registered";
+		// If user is duplicated
+		keyPattern.user 
+			? error.user = "That user is registered"
+			: error.email = "That email is registered"; 
 		return error;
 	}
 
@@ -43,9 +46,9 @@ const handleErrors = ({errors, message, code}) => {
 
 // * Controllers 
 module.exports.signup_post = (req, res) => {
-	const {email, password} = req.body;
+	const {user, email, password} = req.body;
 
-	User.create({email, password})
+	User.create({user, email, password})
 		.then(user => {
 			const token = createToken(user._id);
 
@@ -53,7 +56,6 @@ module.exports.signup_post = (req, res) => {
 			res.status(201).json(user);
 		})
 		.catch(err => {
-			console.log(err);
 			const errors = handleErrors(err);			
 			res.status(400).json(errors);
 		});
