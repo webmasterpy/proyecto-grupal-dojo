@@ -4,6 +4,12 @@ const bcrypt = require("bcrypt");
 
 // * Creamos el esquema para nuestro modelo
 const userSchema = new mongoose.Schema({
+	user: {
+		type: String,
+		required: [true, "Please enter a User Name"],
+		unique: true,
+		lowercase: true,
+	},
 	email:{
 		type:String,
 		required: [true, "Please enter an email"],
