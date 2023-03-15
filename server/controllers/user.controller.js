@@ -50,10 +50,7 @@ module.exports.signup_post = (req, res) => {
 
 	User.create({user, email, password})
 		.then(user => {
-			const token = createToken(user._id);
-
-			res.cookie("New-User", token, { httpOnly: true, maxAge: maxAge * 1000 })
-			res.status(201).json(user);
+			res.status(201).json({user: user.user});
 		})
 		.catch(err => {
 			const errors = handleErrors(err);			
