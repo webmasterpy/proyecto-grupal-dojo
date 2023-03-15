@@ -1,4 +1,4 @@
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Alert } from "react-bootstrap";
 import axios from "axios";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +14,7 @@ const Signup = () => {
 	const [	isUserValid, setIsUserValid ] = useState("");
 	const [ isEmailValid, setIsEmailValid] = useState("");
 	const [ isPasswordValid, setIsPasswordValid ] = useState("");
+	const [ isFormValid, setIsFormValid ] = useState("");
 
 	// ! Handle Submit
 	const handleSubmit = (e) => {
@@ -29,7 +30,12 @@ const Signup = () => {
 			API_URL + "/api/signup", 
 			{user, email, password},
 			{withCredentials: true})
-			.then(user => console.log(user))
+			.then(({ data }) => {
+				setIsFormValid(data.user);
+				setTimeout(() => {
+					setIsFormValid("");
+				}, 3000)
+			})
 			.catch(({response}) => {
 				setIsUserValid(response.data.user);
 				setIsEmailValid(response.data.email);
@@ -63,6 +69,14 @@ const Signup = () => {
 				<ValidForm isFormValid={isPasswordValid} />
 
 				<Button type="submit" >Signup</Button>
+
+				{
+				isFormValid !== ""
+					? <Alert variant="success" className="mt-3">
+							{ isFormValid } has been created
+						</Alert>
+					: null
+			}
 			</Form>
 		</>
 	);
