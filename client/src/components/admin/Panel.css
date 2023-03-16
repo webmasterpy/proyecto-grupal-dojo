@@ -1,0 +1,62 @@
+.contenedor{
+    display: flex;
+}
+
+.menu{
+    text-align: center;
+    padding-top:20px;
+    padding-bottom:20px;
+    width:100%;
+    background-color: #ff9800;
+    color:#fff;
+}
+
+.texto{
+    width: 100%;
+    height:100vh;
+    text-align: center;
+}
+
+.vertical-menu {
+    width: 250px; /* Set a width if you like */
+    height: 100vh;
+    background-color: #073a77;
+}
+
+.vertical-menu a {
+    background-color: #073a77;
+    color: #ffffff;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+}
+
+.vertical-menu a:hover {
+    background-color: #327dd5; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+    background-color: #04AA6D; /* Add a green color to the "active/current" link */
+    color: white;
+}
+
+
+.activado{
+    color: #FFF !important;
+    font-weight: bold;
+    background-color: #04AA6D !important;
+}
+
+.desactivado{
+    color: red;
+    font-weight: bold;
+}
+
+.formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+        

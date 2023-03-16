@@ -23,4 +23,4 @@ projectRoutes(app);
 app.use(user_routes);
 
 //levantar servidor node
-app.listen(port, () => console.log("servidor corriendo en puerto:" + port));
+app.listen(port, () => console.log("Servidor corriendo en puerto:" + port));

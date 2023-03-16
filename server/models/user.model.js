@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: [true, "Please enter a password"],
 		minlength: [6, "Minimun characters are 6"	]
-	},
+	}
 });
 
 // * Encriptar el password antes de guardar

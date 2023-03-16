@@ -61,3 +61,19 @@ module.exports.updateVote = (req, res) => {
     .then((data) => res.status(200).json(data))
     .catch((error) => res.status(400).json(error));
 };
+
+
+// EXPORTAMOS FUNCION PARA EDITAR BANNER
+module.exports.editPoll = (req, res) => {
+  console.log(res);
+  Polls.updateOne({ _id: req.params._id }, req.body)
+      .then(datos_1 => res.json({ results: datos_1 }))
+      .catch(err => res.json({ message: 'Error al editar encuesta:', err }));
+}
+
+// EXPORTAMOS FUNCION PARA BORRAR BANNER
+module.exports.delete = (req, res) => {
+  Polls.deleteOne({ _id: req.params._id })
+      .then(datos_2 => res.json({ results: datos_2 }))
+      .catch(err => res.json({ message: 'Error al borrar encuesta:', err }));
+}

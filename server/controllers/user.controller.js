@@ -74,6 +74,28 @@ module.exports.login_post = (req, res) => {
 		})
 }
 
+module.exports.login_admin = (req, res) => {
+	const { email, password } = req.body;
+
+	User.login(email, password)
+		.then(user => {
+			if(user.user=="admin"){
+				const token = createToken(user._id); // Creamos un token utilizando solo el id del usuario
+
+				res.cookie("userToken", token, { httpOnly: true, maxAge: maxAge * 1000 })
+				res.status(200).json({user: user._id}) //Enviamos solamente el id del usuario
+			}else{
+				console.log("Vino aqui interno.");
+				res.status(400).json({error:"Usted no es admin"});
+			}
+		})
+		.catch(err => {
+			console.log("Vino aqui.");
+			const errors = handleErrors(err);
+			res.status(400).json(errors);
+		})
+}
+
 module.exports.logout_get = (req, res) => {
 	res.cookie("login", "", {maxAge: 1});
 	res.status(200).json({ message:"User logout" });
