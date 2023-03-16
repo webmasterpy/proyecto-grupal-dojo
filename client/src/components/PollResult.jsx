@@ -2,8 +2,11 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Container, Row, Col, Button, Alert} from "react-bootstrap";
 import axios from "axios";
 import { urls } from "../utils/constans";
+import { Bar } from "./Bar";
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -17,10 +20,10 @@ const PollResult = () => {
   const optionsDou = {
     plugins: {
       legend: {
-        display: false,
+        display: true,
       },
     },
-    radius: 100,
+    radius: 150,
   };
 
   useEffect(() => {
@@ -46,25 +49,31 @@ const PollResult = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="button_container">
-        <button className="back_home_button" onClick={() => navigate("/")}>Back to home</button>
-      </div>
-      <h2 style={{marginLeft:"20px"}}>Gracias por votar!</h2>
-      <div className="container_chart">
-        <h1>{data.question}</h1>
-        <div className="chart_results">
-          {configDou && <Doughnut data={configDou} options={optionsDou} />}
-          <div className="votes_chart">
-            {data.options?.map((el) => (
-              <div className="votes_chart_div">
-                {el.name + " " + el.votes + " votes"}
-              </div>
-            ))}
+    <>
+      <Bar/>
+      <div className="container">
+        {/* <div className="button_container">
+          <button className="back_home_button" onClick={() => navigate("/")}>Back to home</button>
+        </div> */}
+        {/* <h2 style={{marginLeft:"20px"}}>Gracias por votar!</h2> */}
+        <Alert variant="success" className="text-center">
+          <b>Gracias por Votar!</b>
+        </Alert>
+        <div className="container_chart">
+          <h1>{data.question}</h1>
+          <div className="chart_results">
+            {configDou && <Doughnut data={configDou} options={optionsDou} />}
+            <div className="votes_chart">
+              {data.options?.map((el) => (
+                <div className="votes_chart_div">
+                  {"["+el.name + "] - " + el.votes + " votes"}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

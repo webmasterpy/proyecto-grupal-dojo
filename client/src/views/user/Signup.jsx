@@ -34,6 +34,7 @@ const Signup = () => {
 				setIsFormValid(data.user);
 				setTimeout(() => {
 					setIsFormValid("");
+					setUser("");
 				}, 3000)
 			})
 			.catch(({response}) => {
@@ -45,31 +46,31 @@ const Signup = () => {
 
 	return (
 		<>
-			<h1>Signup</h1>
+			<h2 className="titulo-form">Signup</h2>
 			<Form onSubmit={handleSubmit} >
 				<BasicForm
 					label="User"
 					type="text"
 					placeholder="User"
 					onChange={({ target }) => setUser(target.value)} />
-				<ValidForm isFormValid={isUserValid} />
-
+				
 				<BasicForm
 					label="Email"
 					type="text"
 					placeholder="Email"
 					onChange={({ target }) => setEmail(target.value)} />
-				<ValidForm isFormValid={isEmailValid} />
-
+				
 				<BasicForm
 					label="Password"
 					type="password"
 					placeholder="Password"
 					onChange={({ target }) => setPassword(target.value)} />
+
+				<ValidForm isFormValid={isUserValid} />
+				<ValidForm isFormValid={isEmailValid} />
 				<ValidForm isFormValid={isPasswordValid} />
 
 				<Button type="submit" >Signup</Button>
-
 				{
 				isFormValid !== ""
 					? <Alert variant="success" className="mt-3">

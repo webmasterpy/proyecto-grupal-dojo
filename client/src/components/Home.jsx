@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { Poll } from "./Poll";
 import { urls } from "../utils/constans";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Bar } from "./Bar";
 
 export const Home = () => {
   const [top3, setTop3] = useState([]);
@@ -37,14 +38,15 @@ export const Home = () => {
   const renderHome = () => {
     return(
       <>
+      <Bar/>
       <div className="container">
-        <div className="button_container">
+        {/* <div className="button_container">
           <button 
             className="back_home_button" 
             onClick={() => navigate("/polls/new")}>
               Create your own Poll
           </button>
-        </div>
+        </div> */}
       
         <div className="two-columns">
           <div className="first_column">
@@ -75,7 +77,7 @@ export const Home = () => {
   return (
     <>
     {
-      window.localStorage.getItem("userId") !== null 
+      window.localStorage.getItem("userId") !== "" 
         ? renderHome()
         : navigate("/")
     }

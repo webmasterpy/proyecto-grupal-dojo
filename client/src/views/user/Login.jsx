@@ -50,24 +50,27 @@ const Login = () => {
 
 	return (
 		<>
-			<h1>Login</h1>
+		<div className="">
+			<h2 className="titulo-form">Login</h2>
 			<Form onSubmit={handleSubmit} >
 				<BasicForm
 					label="Email"
 					type="text"
 					placeholder="Email"
 					onChange={({ target }) => setEmail(target.value)} />
-				<ValidForm isFormValid={isEmailValid} />
 
 				<BasicForm
 					label="Password"
 					type="password"
 					placeholder="Password" 
 					onChange={({ target }) => setPassword(target.value)}/>
-				<ValidForm isFormValid={isPasswordValid} />
 
+				<ValidForm isFormValid={isEmailValid} />
+				<ValidForm isFormValid={isPasswordValid} />
+				
 				<Button type="submit" >Login</Button>
 			</Form>
+			</div>
 		</>
 	);
 }

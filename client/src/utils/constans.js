@@ -3,5 +3,6 @@ export const urls = {
   'polls': '/api/polls',
   'newPoll': '/api/polls/new',
   'getPoll': '/api/poll/',
-  'chart': '/poll/chart/'
+  'chart': '/poll/chart/',
+  'logout': '/api/logout'
 }

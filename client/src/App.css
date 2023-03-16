@@ -181,3 +181,80 @@
   height: 40px;
   background-color: #87a7d3;
 }
+
+
+/* Estructura nueva*/
+
+@font-face {
+  font-family: 'Menti Text';
+  src: local('Menti Text'),
+      url('fonts/MentiText-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Menti Text';
+  src: url('fonts/MentiText-SemiBold.woff2') format('woff2'),
+      url('fonts/MentiText-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Menti Text';
+  src: url('fonts/MentiText-Light.woff2') format('woff2'),
+      url('fonts/MentiText-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Menti Display';
+  src: url('fonts/MentiDisplay-SemiBold.woff2') format('woff2'),
+      url('fonts/MentiDisplay-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+body{
+  font-family: 'Menti Text';
+  background-color: #eee !important;
+}
+
+.cabecera-votos{
+  background-color: #FFF;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+.cabecera-votos img{
+  vertical-align: middle !important;
+}
+
+.texto-logo{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.bordes-5{
+  border-radius: 10px;
+  padding: 5px;
+  background-color:#fff;
+  text-align:center;
+  margin: 10px;
+}
+
+.titulo-form{
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 30px;
+}
+
+button{
+  margin-right: 5px !important;
+}

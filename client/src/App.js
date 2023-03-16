@@ -16,10 +16,10 @@ axios.defaults.baseURL = "http://localhost:8000";
 function App() {
   return (
     <div className="App">
-      <Bar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<UserForm />} />
+          <Route path="/login" element={<UserForm />} />
           <Route path="/home" element={<Home />} />
           <Route path="/polls/new" element={<FormPolls />} />
           <Route path="/poll/:id" element={<VotePoll />} />

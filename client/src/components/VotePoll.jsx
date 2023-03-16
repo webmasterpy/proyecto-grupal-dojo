@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { urls } from "../utils/constans";
 import { useNavigate } from "react-router-dom";
+import { Bar } from "./Bar";
 
 
 export const VotePoll = (props) => {
@@ -33,6 +34,8 @@ export const VotePoll = (props) => {
   }, []);
 
   return (
+    <>
+    <Bar/>
     <div className="container_vote">
       <h1>{data.question ?? "No se pudo obtener datos"}</h1>
       <div className="vote_items_list">
@@ -46,5 +49,6 @@ export const VotePoll = (props) => {
         ))}
       </div>
     </div>
+    </>
   );
 };
