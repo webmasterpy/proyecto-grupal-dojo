@@ -1,4 +1,9 @@
-# proyecto-grupal-dojo
+# Dojo Voting
+
 Proyecto grupal dojo
 
-# HELLO WOrld
+## Integrantes
+
+- Eduardo
+- Hugo
+- Oscar
